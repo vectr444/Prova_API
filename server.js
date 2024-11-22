@@ -14,7 +14,7 @@ server.get('/',(req, res) => {
 
 /*********************ENDPOINTS USUARIOS********************* */ 
 server.get('/users', (req, res) => {
-  res.json(usuarios);
+  res.status(200).json(usuarios);
 });
 
 server.get('/users/:id', (req, res) => {
@@ -24,7 +24,7 @@ server.get('/users/:id', (req, res) => {
   if(idExiste == null){
     return res.status(404).json({ mensagem: 'Usuário não encontrado' });
   }
-  res.json(idExiste);
+  res.status(200).json(idExiste);
 });
 
 server.post('/users', (req, res) => {
@@ -89,7 +89,7 @@ server.post('/users', (req, res) => {
   }
 
   usuarios.push(novoUsuario)
-  return res.json({message: "Usuário cadastrado com sucesso"})
+  return res.status(200).json({message: "Usuário cadastrado com sucesso"})
  
 });
 
@@ -153,7 +153,7 @@ server.put('/users/:id', (req, res) => {
     }
     return idEditar;
   });
-  return res.json({message: "Usuário atualizado com sucesso" })
+  return res.status(200).json({message: "Usuário atualizado com sucesso" })
 });
 
 server.delete('/users/:id', (req, res) => {
@@ -165,13 +165,13 @@ server.delete('/users/:id', (req, res) => {
   }
 
   usuarios = usuarios.filter(idUsr => idUsr.id != id)
-  res.json({message: "Usuário removido com sucesso"});
+  res.status(200).json({message: "Usuário removido com sucesso"});
 });
 
 /*********************ENDPOINTS PRODUTOS********************* */ 
 
 server.get('/products', (req, res) => {
-  res.json(produtos);
+  res.status(200).json(produtos);
 });
 
 server.get('/products/:id', (req, res) => {
@@ -181,7 +181,7 @@ server.get('/products/:id', (req, res) => {
   if(idExiste == null){
     return res.status(404).json({ mensagem: 'Produto não encontrado' });
   }
-  res.json(idExiste);
+  res.status(200).json(idExiste);
 });
 
 server.post('/products', (req, res) => {
@@ -226,7 +226,7 @@ server.post('/products', (req, res) => {
   }
 
   produtos.push(novoProduto)
-  return res.json({message: "Produto cadastrado com sucesso"})
+  return res.status(200).json({message: "Produto cadastrado com sucesso"})
 });
 
 server.put('/products/:id', (req, res) => {
@@ -270,7 +270,7 @@ server.put('/products/:id', (req, res) => {
     }
     return idEditar;
   });
-  return res.json({message: "Produto atualizado com sucesso" })
+  return res.status(200).json({message: "Produto atualizado com sucesso" })
 });
 
 server.delete('/products/:id', (req, res) => {
@@ -282,7 +282,7 @@ server.delete('/products/:id', (req, res) => {
   }
 
   produtos = produtos.filter(idProd => idProd.id != id)
-  res.json({message: "Produto removido com sucesso"});
+  res.status(200).json({message: "Produto removido com sucesso"});
 });
 
 server.listen(3000, () => {
